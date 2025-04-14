@@ -1,0 +1,9 @@
+#container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 150px;
+    flex-flow: row wrap;
+    max-width: 864px;
+    max-height: 864px;
+}
