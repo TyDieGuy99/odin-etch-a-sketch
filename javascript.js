@@ -15,10 +15,13 @@ function updateGrid() {
             container.appendChild(box);
             box.addEventListener('mouseenter', () => {
                     var randomColor = Math.floor(Math.random()*16777215).toString(16);
-                    var hexColor = '#' + randomColor
+                    var hexColor = '#' + randomColor;
+                    if (i <= 10) {
+                        box.style.opacity = i / 10;
+                        i++
+                    }
                     box.style.background = hexColor;
-                    box.style.opacity = '0.10';
-                    console.log(box.style.background);
+                    console.log(box.style.opacity);
             });
             //console.log((i + 1) * (row + 1))
         }
