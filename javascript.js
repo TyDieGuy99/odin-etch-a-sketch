@@ -1,13 +1,7 @@
 const container = document.querySelector('#container');
 let squares = 16;
+let h = 0;
 updateGrid();
-
-const button = document.querySelector('button');
-button.addEventListener('click', () => {
-    console.log('button pressed')
-    squares = prompt('Input a number 1-100 to create your grid size.');
-    updateGrid();
-});
 
 //create grid of div squares
 function updateGrid() {
@@ -24,14 +18,26 @@ function updateGrid() {
                 if (box.style.background == 'white') {
                     box.style.background = 'black';
                     console.log(box.style.color);
-                } else {
-                    box.style.background = 'white';
-                    console.log(box.style.color);
                 }     
             });
             //console.log((i + 1) * (row + 1))
+            h++;
         }
     }
+    console.log(h);
 }
 
+function gridBtn() {
+    console.log('button pressed');
+    squares = prompt('Input a number 1-100 to create your grid size.');
+    clearGrid();
+    updateGrid();
+}
 
+function clearGrid() {
+    const parent = document.getElementById('container');
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+    
+}
