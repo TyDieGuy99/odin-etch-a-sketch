@@ -1,18 +1,17 @@
 const container = document.querySelector('#container');
 let squares = 16;
-let h = 0;
 updateGrid();
 
 //create grid of div squares
 function updateGrid() {
+    boxSize = (800/squares) + 'px';
     for (let row = 0; row < squares; row++) {
         for (let i = 0; i < squares; i++) {
             const box = document.createElement('div');
             box.classList.add('box');
             box.style.background = 'white';
-            box.style.border = '2px solid black';
-            box.style.width = '50px';
-            box.style.height = '50px';
+            box.style.width = boxSize;
+            box.style.height = boxSize;
             container.appendChild(box);
             box.addEventListener('mouseenter', (e) => {
                 if (box.style.background == 'white') {
@@ -21,10 +20,8 @@ function updateGrid() {
                 }     
             });
             //console.log((i + 1) * (row + 1))
-            h++;
         }
     }
-    console.log(h);
 }
 
 function gridBtn() {
