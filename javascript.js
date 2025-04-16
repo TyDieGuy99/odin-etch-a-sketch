@@ -1,5 +1,6 @@
 const container = document.querySelector('#container');
 let squares = 16;
+let colorMode = 'true';
 var regex = /^[0-9]+$/;
 updateGrid();
 
@@ -16,6 +17,7 @@ function updateGrid() {
             box.style.opacity = '0.0';
             container.appendChild(box);
             box.addEventListener('mouseenter', () => {
+                if (colorMode === 'true') {
                     let randomColor = Math.floor(Math.random()*16777215).toString(16);
                     console.log('this is the random color: ' + randomColor);
                     while (randomColor.length < 6) { //maybe tempt solution if string gives less than 6 characters randomize again
@@ -25,6 +27,10 @@ function updateGrid() {
                     console.log(hexColor);
                     box.style.background = hexColor;
                     console.log('this is what shows: ' + box.style.background);
+                } else {
+                    box.style.background = 'black';
+                }
+                    
                     
                     if (box.style.opacity < 1.0) {
                         let currentOpacity = box.style.opacity;
@@ -43,13 +49,24 @@ function updateGrid() {
 
 //call from button to create new grid
 function gridBtn() {
-    console.log('button pressed');
     squares = prompt('Input a number 1-100 to create your grid size.');
     while ((squares > 100) || (squares < 1) || (!squares.match(regex))) {
         squares = prompt('Please try again. Input a number 1-100 to create your grid size.');
     }
     clearGrid();
     updateGrid();
+}
+
+function colorBtn() {
+    if (colorMode === 'true') {
+        colorMode = 'false'
+    } else {
+        colorMode = 'true'
+    }
+}
+
+function opacityBtn() {
+
 }
 
 //clears current grid
