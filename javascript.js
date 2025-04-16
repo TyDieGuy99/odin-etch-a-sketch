@@ -1,9 +1,15 @@
 const container = document.querySelector('#container');
+const buttons = document.querySelectorAll('#onOff');
 let squares = 16;
 let colorMode = 'true';
 let opacityMode = 'true';
 var regex = /^[0-9]+$/;
+
 updateGrid();
+
+buttons.forEach((button) => {
+    button.style.background = '#071013';
+});
 
 //create grid of div squares
 function updateGrid() {
@@ -20,14 +26,14 @@ function updateGrid() {
             box.addEventListener('mouseenter', () => {
                 if (colorMode === 'true') {
                     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-                    console.log('this is the random color: ' + randomColor);
+                    //console.log('this is the random color: ' + randomColor);
                     while (randomColor.length < 6) { //maybe tempt solution if string gives less than 6 characters randomize again
                         randomColor = Math.floor(Math.random()*16777215).toString(16);
                     }
                     var hexColor = '#' + randomColor;
-                    console.log(hexColor);
+                    //console.log(hexColor);
                     box.style.background = hexColor;
-                    console.log('this is what shows: ' + box.style.background);
+                    //console.log('this is what shows: ' + box.style.background);
                 } else {
                     box.style.background = 'black';
                 }
@@ -43,9 +49,7 @@ function updateGrid() {
                     //console.log('this is what is being shown ' + box.style.opacity);
                 } else {
                     box.style.opacity = '1.0';
-                }    
-                    
-                    
+                }      
             });
         }
     }
@@ -61,19 +65,23 @@ function gridBtn() {
     updateGrid();
 }
 
-function colorBtn() {
+function colorBtn(button) {
     if (colorMode === 'true') {
-        colorMode = 'false'
+        colorMode = 'false';
+        btnColor(false, button);
     } else {
-        colorMode = 'true'
+        colorMode = 'true';
+        btnColor(true, button);
     }
 }
 
 function opacityBtn() {
     if (opacityMode === 'true') {
-        opacityMode = 'false'
+        opacityMode = 'false';
+        btnColor(false, button);
     } else {
-        opacityrMode = 'true'
+        opacityMode = 'true';
+        btnColor(true, button);
     }
 }
 
@@ -84,4 +92,13 @@ function clearGrid() {
         parent.removeChild(parent.firstChild);
     }
     console.clear();
+}
+
+function btnColor(trueFalse, button) {
+    if (trueFalse === true) {
+        button.style.background = 'green';
+    } else  if (trueFalse === false) {
+        button.style.background = 'red';
+    }
+    
 }
