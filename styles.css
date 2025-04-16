@@ -1,3 +1,11 @@
+body {
+    background-color: #17161D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ACC12F;
+}
+
 #container {
     display: flex;
     justify-content: center;
@@ -8,8 +16,35 @@
     max-height: 800px;
     min-width: 800px;
     min-height: 800px;
-    border: 2px solid pink;
+    border: 15px solid #575C55;
+    background-color: white;
+    align-self: center;
 }
+
+#content {
+    display: flex;
+    gap: 150px;
+}
+
+#text,
+#filler {
+    flex: 1;
+    margin: 50px;
+    padding: 15px;
+}
+
+#text {
+    background-color: #45425A;
+}
+
+ul {
+    font-size: 22px; 
+}
+
+li {
+    margin-top: 1em;
+}
+
 
 #buttons {
     display: flex;
@@ -17,4 +52,31 @@
     flex-direction: row;
     margin-top: 50px;
     gap: 50px;
+    
+}
+
+button {
+    width: 100px;
+    text-align: center;
+    border: 3px solid #96A13A;
+    background-color: #45425A;
+    color: #ACC12F;
+    font-weight: 700;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    box-shadow: 0 9px #6C7D47;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:active {
+    opacity: 1;
+    box-shadow: 0 5px #2E2B3B;
+    transform: translateY(4px)
 }
