@@ -8,15 +8,29 @@
     <link rel = 'stylesheet' href = "styles.css">
 </head>
 <body>
+    <h1>Etch-A-Sketch</h1>
     <div id = 'buttons'>
         <button id = 'onOff' onclick='colorBtn(this)'>Color</button>
         <button onclick='gridBtn()'>New Grid</button>
         <button id = 'onOff' onclick='opacityBtn(this)'>Opacity</button>
     </div>
-    
-    <div id = 'container'>
+    <div id = 'content'>
+        <div id ='text'>
+            <h2>Notes:</h2>
+            <ul>
+                <li>Use the "New Grid" button to clear the space and change grid size if you want.</li>
+                <li>Switch between rainbow and black by hitting the "Color" button.</li>
+                <li>Turn gradually increasing opacity on or off with the "Opacity" button.</li>
+                <li>*Both rainbow and gradually increasing opacity are turned on by default.</li>
+                <li>*You can right click and left click somewhere else in the canvas if you want to "pick up your pencil".</li>
+            </ul>
+        </div>
+        <div id = 'container'>
 
+        </div>
+        <div id = 'filler'></div>
     </div>
+    
 
 </body>
 </html>
