@@ -1,5 +1,6 @@
 const container = document.querySelector('#container');
 let squares = 16;
+var regex = /^[0-9]+$/;
 updateGrid();
 
 //create grid of div squares
@@ -12,16 +13,28 @@ function updateGrid() {
             box.style.background = 'white';
             box.style.width = boxSize;
             box.style.height = boxSize;
+            box.style.opacity = '0.0';
             container.appendChild(box);
             box.addEventListener('mouseenter', () => {
-                    var randomColor = Math.floor(Math.random()*16777215).toString(16);
-                    var hexColor = '#' + randomColor;
-                    if (i <= 10) {
-                        box.style.opacity = i / 10;
-                        i++
+                    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+                    console.log('this is the random color: ' + randomColor);
+                    while (randomColor.length < 6) { //maybe tempt solution if string gives less than 6 characters randomize again
+                        randomColor = Math.floor(Math.random()*16777215).toString(16);
                     }
+                    var hexColor = '#' + randomColor;
+                    console.log(hexColor);
                     box.style.background = hexColor;
-                    console.log(box.style.opacity);
+                    console.log('this is what shows: ' + box.style.background);
+                    
+                    if (box.style.opacity < 1.0) {
+                        let currentOpacity = box.style.opacity;
+                        //console.log('this is the current ' + currentOpacity);
+                        let newOpacity = parseFloat(currentOpacity) + 0.1;
+                        //console.log('this is the new ' + newOpacity);
+                        box.style.opacity = newOpacity;
+                    }
+                    //console.log('this is what is being shown ' + box.style.opacity);
+                    
             });
             //console.log((i + 1) * (row + 1))
         }
@@ -32,6 +45,9 @@ function updateGrid() {
 function gridBtn() {
     console.log('button pressed');
     squares = prompt('Input a number 1-100 to create your grid size.');
+    while ((squares > 100) || (squares < 1) || (!squares.match(regex))) {
+        squares = prompt('Please try again. Input a number 1-100 to create your grid size.');
+    }
     clearGrid();
     updateGrid();
 }
@@ -42,4 +58,5 @@ function clearGrid() {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+    console.clear();
 }
