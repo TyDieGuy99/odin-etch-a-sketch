@@ -1,6 +1,7 @@
 const container = document.querySelector('#container');
 let squares = 16;
 let colorMode = 'true';
+let opacityMode = 'true';
 var regex = /^[0-9]+$/;
 updateGrid();
 
@@ -31,7 +32,7 @@ function updateGrid() {
                     box.style.background = 'black';
                 }
                     
-                    
+                if (opacityMode === 'true') {
                     if (box.style.opacity < 1.0) {
                         let currentOpacity = box.style.opacity;
                         //console.log('this is the current ' + currentOpacity);
@@ -40,9 +41,12 @@ function updateGrid() {
                         box.style.opacity = newOpacity;
                     }
                     //console.log('this is what is being shown ' + box.style.opacity);
+                } else {
+                    box.style.opacity = '1.0';
+                }    
+                    
                     
             });
-            //console.log((i + 1) * (row + 1))
         }
     }
 }
@@ -66,7 +70,11 @@ function colorBtn() {
 }
 
 function opacityBtn() {
-
+    if (opacityMode === 'true') {
+        opacityMode = 'false'
+    } else {
+        opacityrMode = 'true'
+    }
 }
 
 //clears current grid
