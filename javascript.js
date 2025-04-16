@@ -7,8 +7,10 @@ var regex = /^[0-9]+$/;
 
 updateGrid();
 
+// on/off button coloring
 buttons.forEach((button) => {
-    button.style.background = '#071013';
+    button.style.background = '#26FF17';
+    button.style.color = '#17161D';
 });
 
 //create grid of div squares
@@ -23,17 +25,15 @@ function updateGrid() {
             box.style.height = boxSize;
             box.style.opacity = '0.0';
             container.appendChild(box);
+            //change div color on mouse enter
             box.addEventListener('mouseenter', () => {
                 if (colorMode === 'true') {
                     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-                    //console.log('this is the random color: ' + randomColor);
-                    while (randomColor.length < 6) { //maybe tempt solution if string gives less than 6 characters randomize again
+                    while (randomColor.length < 6) { //maybe tempt solution, if string gives less than 6 characters randomize again
                         randomColor = Math.floor(Math.random()*16777215).toString(16);
                     }
                     var hexColor = '#' + randomColor;
-                    //console.log(hexColor);
                     box.style.background = hexColor;
-                    //console.log('this is what shows: ' + box.style.background);
                 } else {
                     box.style.background = 'black';
                 }
@@ -41,12 +41,9 @@ function updateGrid() {
                 if (opacityMode === 'true') {
                     if (box.style.opacity < 1.0) {
                         let currentOpacity = box.style.opacity;
-                        //console.log('this is the current ' + currentOpacity);
                         let newOpacity = parseFloat(currentOpacity) + 0.1;
-                        //console.log('this is the new ' + newOpacity);
                         box.style.opacity = newOpacity;
                     }
-                    //console.log('this is what is being shown ' + box.style.opacity);
                 } else {
                     box.style.opacity = '1.0';
                 }      
@@ -65,6 +62,7 @@ function gridBtn() {
     updateGrid();
 }
 
+//change between rainbow/black and button color
 function colorBtn(button) {
     if (colorMode === 'true') {
         colorMode = 'false';
@@ -75,7 +73,8 @@ function colorBtn(button) {
     }
 }
 
-function opacityBtn() {
+//change opacity effect on/off and button color
+function opacityBtn(button) {
     if (opacityMode === 'true') {
         opacityMode = 'false';
         btnColor(false, button);
@@ -94,6 +93,7 @@ function clearGrid() {
     console.clear();
 }
 
+//changes the button color
 function btnColor(trueFalse, button) {
     if (trueFalse === true) {
         button.style.background = 'green';
