@@ -6,6 +6,8 @@
     flex-flow: row wrap;
     max-width: 800px;
     max-height: 800px;
+    min-width: 800px;
+    min-height: 800px;
     border: 2px solid pink;
 }
 
@@ -14,4 +16,5 @@
     justify-content: center;
     flex-direction: row;
     margin-top: 50px;
+    gap: 50px;
 }
